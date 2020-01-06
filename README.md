@@ -1,7 +1,7 @@
-# Zymo Aurelia Skeleton
+# Aurelia Skeleton
 
 ## Pre-requisites
-1) Node 8.0+
+1) Node 10+
 2) Aurelia CLI Installed `npm install aurelia-cli -g`
 
 ## Setup
