@@ -13,11 +13,11 @@ export class SessionService {
     }
 
     async register(data) {
-        return await this._apiRequest('HAUsers/logout', data);
+        return await this._apiRequest('User/logout', data);
     }
 
     async login(data) {
-        return await this._apiRequest('HAUsers/login', data);
+        return await this._apiRequest('User/login', data);
     }
 
     async logout() {

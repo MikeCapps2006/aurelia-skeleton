@@ -13,7 +13,7 @@ export class App {
 
     configureRouter(config, router) {
         config.options.pushState = true;
-        config.title = 'Chicks Gold | Cheap Runescape Gold';
+        config.title = 'Aurelia Skeleton';
         config.addAuthorizeStep(AuthorizeStep);
         config.addPreActivateStep(ScrollPageStep);
         config.addPreRenderStep(MetadataStep);
