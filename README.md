@@ -6,7 +6,7 @@
 
 ## Setup
 1) Open a terminal on the root directory and type `npm install`
-2) Run `au run` or `au run --watch` for live reload
-3) Navigate to localhost:9000
+2) Run `npm run start`
+3) Navigate to localhost:8080
 
 Enjoy
