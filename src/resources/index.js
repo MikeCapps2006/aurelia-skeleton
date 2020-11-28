@@ -1,23 +1,24 @@
-const ELEMENTS = './elements';
-const VALUE_CONVERTERS = './value-converters';
+import {PLATFORM} from 'aurelia-pal';
 
 export function configure(config) {
     config.globalResources([
-        // Elements
-        `${ELEMENTS}/input-slider/input-slider`,
-        `${ELEMENTS}/error-list/error-list.html`,
-        `${ELEMENTS}/confirm-dialog/confirm-dialog.html`,
-        `${ELEMENTS}/postal-input/postal-input.html`,
-        `${ELEMENTS}/state-input/state-input`,
-        `${ELEMENTS}/phone-input/phone-input.html`,
-        `${ELEMENTS}/sex-input/sex-input`,
+        PLATFORM.moduleName('./elements/error-list/error-list.html'),
+        PLATFORM.moduleName('./elements/input-slider/input-slider'),
+        PLATFORM.moduleName('./elements/phone-input/phone-input.html'),
+        PLATFORM.moduleName('./elements/postal-input/postal-input.html'),
+        PLATFORM.moduleName('./elements/sex-input/sex-input'),
+        PLATFORM.moduleName('./elements/state-input/state-input'),
 
         // Value Converters
-        `${VALUE_CONVERTERS}/full-name`,
-        `${VALUE_CONVERTERS}/currency-formatter`,
-        `${VALUE_CONVERTERS}/keys`,
-        `${VALUE_CONVERTERS}/proper-case`,
-        `${VALUE_CONVERTERS}/date-formatter`,
-        `${VALUE_CONVERTERS}/rgb-to-hex`,
+        PLATFORM.moduleName('./value-converters/crypto-name-formatter'),
+        PLATFORM.moduleName('./value-converters/currency-formatter'),
+        PLATFORM.moduleName('./value-converters/date-formatter'),
+        PLATFORM.moduleName('./value-converters/format-html'),
+        PLATFORM.moduleName('./value-converters/format-from-html'),
+        PLATFORM.moduleName('./value-converters/full-name'),
+        PLATFORM.moduleName('./value-converters/keys'),
+        PLATFORM.moduleName('./value-converters/number-formatter'),
+        PLATFORM.moduleName('./value-converters/proper-case'),
+        PLATFORM.moduleName('./value-converters/time-formatter'),
     ]);
 }

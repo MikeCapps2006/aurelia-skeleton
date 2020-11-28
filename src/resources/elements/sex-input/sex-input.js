@@ -1,5 +1,5 @@
 import {bindable} from 'aurelia-framework';
-
+import './sex-input.scss';
 export class SexInputCustomElement {
 
     sexOptions = ['male', 'female'];

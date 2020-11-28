@@ -20,7 +20,13 @@ export class ValidationRenderer {
 
         element.classList.add('is-invalid');
 
-        const formGroup = element.closest('.form-group');
+        let formGroup = element.closest('.mb-3');
+        const customElement = element.closest('text-input');
+        if (customElement) {
+            formGroup = customElement.firstChild;
+            const customElementChild = formGroup.lastChild;
+            customElementChild.classList.add('is-invalid');
+        }
         if (!formGroup) {
             return;
         }
@@ -37,7 +43,11 @@ export class ValidationRenderer {
             return;
         }
 
-        const formGroup = element.closest('.form-group');
+        let formGroup = element.closest('.mb-3');
+        const customElement = element.closest('text-input');
+        if (customElement) {
+            formGroup = customElement.firstChild;
+        }
         if (!formGroup) {
             return;
         }
@@ -50,7 +60,8 @@ export class ValidationRenderer {
         formGroup.removeChild(message);
 
         if (formGroup.querySelectorAll('.invalid-feedback').length === 0) {
-            element.classList.remove('is-invalid');
+            const formGroupChild = formGroup.lastChild;
+            formGroupChild.classList.remove('is-invalid');
         }
     }
 }

@@ -4,6 +4,6 @@ export class DateFormatValueConverter {
         if (!value) {
             return;
         }
-        return moment(value).format(format);
+        return moment.utc(value).local().format(format);
     }
 }

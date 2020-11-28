@@ -1,5 +1,4 @@
 <template>
-    <require from="./home.css"></require>
     <div id="home" class="container">
        <h3 class="heading">
            Lets look at all the components included in this skeleton
@@ -16,41 +15,6 @@
                     Here we can see an input slider, which can be used a variety of inputs. We explicitly set a minimum value of 10, max of 100, and each step is 10 values apart.
                 </div>
                 <range-slider value.two-way="rangeSliderValue" min="0" max="100" step="10"></range-slider>
-            </div>
-
-            <div class="popup-dialog component-block">
-                <div class="component-title">
-                    Popup Dialog
-                </div>
-                <div class="component-description">
-                    Here we can open a popup dialog to confirm a selection or deletion. These entries are in a form that uses aurelia's powerful binding , you should take a look to see how these are done. This makes sending information from the DOM to the view controller quite simple.
-                </div>
-                <button class="btn" click.delegate="openDialog()">Open Dialog</button>
-                <div class="dialog-response" if.bind="dialogResponse">
-                    Dialog response: ${dialogResponse}
-                </div>
-                <div class="component-description">
-                    We can also change what we are sending there quite easily. This example also uses the form submit.delegate convention, so you can look at how that is used.
-                </div>
-                <form submit.delegate="openDialog()">
-                    <div class="form-group">
-                        <label for="heading">Dialog Heading:</label>
-                        <input id="heading" type="text" value.bind="dialogSettings.heading" />
-                    </div>
-                    <div class="form-group">
-                        <label for="subtitle">Dialog Subtitle:</label>
-                        <input id="subtitle" type="text" value.bind="dialogSettings.subtitle" />
-                    </div>
-                    <div class="form-group">
-                        <label for="body">Dialog Body:</label>
-                        <input id="body" type="text" value.bind="dialogSettings.body" />
-                    </div>
-                    <div class="form-group">
-                        <label for="buttonText">Dialog Confirmation Button Text:</label>
-                        <input id="buttonText" type="text" value.bind="dialogSettings.buttonText" />
-                    </div>
-                    <button class="btn" type="submit">Open Dialog</button>
-                </form>
             </div>
 
             <div class="notifications component-block">
@@ -100,25 +64,7 @@
                             With the full name formatter, we can give an object that contains the properties first_name and last_name, or firstName and lastName, and the converter will concatanate the name for you without having to write it out twice each time.
                         </div>
                         <div class="converter-text">
-                            Lets give it the object {first_name: "John", last_name: "Smith"} : ${johnSmith | fullName}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="value-converters value-block">
-                <div class="value-converters-items">
-                    <div class="converter">
-                        <div class="converter-title">
-                            RGB to Hexcode Converter
-                        </div>
-                        <div class="converter-description">
-                            This is a bi-directional value converter. We are giving the value converter our value, and it will change the object for us within our view controller. This is a very powerful binding convention for Aurelia
-                        </div>
-                        <div class="converter-text">
-                            <label for="color">Select Color:</label>
-                            <input id="color" type="color" value.bind="rgb | rgbToHex" />
-                            <br/> r: ${rgb.r}, g:${rgb.g}, b:${rgb.b}
+                            Lets give it the object {firstName: "John", lastName: "Smith"} : ${johnSmith | fullName}
                         </div>
                     </div>
                 </div>

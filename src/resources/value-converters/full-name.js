@@ -4,6 +4,6 @@ export class FullNameValueConverter {
             return;
         }
 
-        return `${value.first_name} ${value.last_name}`;
+        return `${value.firstName ? value.firstName : ''} ${value.lastName ? value.lastName : ''}`;
     }
 }

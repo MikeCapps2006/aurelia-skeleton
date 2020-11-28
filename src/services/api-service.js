@@ -1,30 +1,90 @@
 import {inject, buildQueryString} from 'aurelia-framework';
-import {Config} from 'aurelia-api';
-import {json} from 'aurelia-fetch-client';
+import {HttpClient, json} from 'aurelia-fetch-client';
+import toastr from 'toastr';
 
-@inject(Config)
+@inject(HttpClient, toastr)
 export class ApiService {
-    constructor(endpoint) {
-        this.endpoint = endpoint.getEndpoint('api');
+    constructor(http, notification) {
+        this.notification = notification;
+        this.http = http;
     }
 
-    async doGet(path, params) {
+    async _request(path, options) {
+        const result = await this.http.fetch(path, options);
+        if (result) {
+            const status = result.status;
+            if (status === 204) {
+                return null;
+            }
+
+            if (status > 400) {
+                return null;
+            }
+
+            let response;
+            if (result) {
+                response = await result.json();
+            }
+
+            if (status >= 200 && status < 400) {
+                return response;
+            }
+        }
+
+        return null;
+    }
+
+    doGet(path, params) {
+        const options = {
+            method: 'GET'
+        };
+
         if (params) {
             path += `?${buildQueryString(params)}`;
         }
 
-        return await this.endpoint.find(path, null, 'json');
+        return this._request(path, options);
     }
 
-    async doPost(path, body) {
-        return await this.endpoint.post(path, json(body), 'json');
+    doPatch(path, body) {
+        const options = {
+            method: 'PATCH',
+            body: json(body)
+        };
+
+        return this._request(path, options);
     }
 
-    async doPut(path, body) {
-        return await this.endpoint.update(path, null, json(body), 'json');
+    doPost(path, body, isFile = false) {
+        return this._push(path, body, false, isFile);
     }
 
-    async doDelete(path) {
-        return await this.endpoint.destroy(path);
+    doPut(path, body) {
+        return this._push(path, body, true);
+    }
+
+    _fileUpload(path, formData) {
+        const options = {
+            method: 'POST',
+            body: formData
+        };
+        return this._request(path, options);
+    }
+
+    doDelete(path) {
+        const options = {
+            method: 'DELETE'
+        };
+
+        return this._request(path, options);
+    }
+
+    _push(path, body, asPut = false, isFile = false) {
+        const options = {
+            method: asPut ? 'PUT' : 'POST',
+            body: isFile ? body : json(body)
+        };
+
+        return this._request(path, options);
     }
 }

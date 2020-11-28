@@ -1,4 +1,5 @@
 import {bindable, bindingMode, inject} from 'aurelia-framework';
+import './input-slider.scss';
 
 @inject(Element)
 export class RangeSlider {

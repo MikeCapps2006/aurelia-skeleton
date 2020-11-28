@@ -1,15 +1,10 @@
-import {inject} from 'aurelia-framework';
-import {DialogService} from 'aurelia-dialog';
-import {ConfirmDialog} from "../../resources/elements/confirm-dialog/confirm-dialog";
-import {Notification} from 'aurelia-notification';
-
-@inject(DialogService, Notification)
+import toastr from 'toastr'
+import './home.scss';
 
 export class Home {
 
-    constructor(dialogService, notification) {
-        this.dialogService = dialogService;
-        this.notification = notification;
+    constructor() {
+        this.notification = toastr;
     }
 
     attached() {
@@ -31,23 +26,7 @@ export class Home {
         {type: 'success', message: "Open Success Message"}
     ];
 
-    johnSmith = {first_name: "John", last_name: "Smith"};
-
-    rgb = { r: 146, g: 39, b: 143 };
-
-    dialogSettings = {heading: 'Example Heading', subtitle: 'Example Subtitle' , body: 'Example Body', buttonText: 'My Confirm Text'};
-
-    openDialog() {
-        if (!this.modalOpen) {
-            this.modalOpen = true;
-            this.dialogService.open({viewModel: ConfirmDialog, model: this.dialogSettings, lock:false})
-                .whenClosed(response => {
-                    this.modalOpen = false;
-                    this.dialogResponse = response.output;
-                    console.log(response);
-                })
-        }
-    }
+    johnSmith = {firstName: "John", lastName: "Smith"};
 
     openNotification(button) {
         this.notification[button.type](button.message)
