@@ -18,7 +18,7 @@ export class Home {
         //Aurelia supports ES6/7 Methods so using async/await is going to be your best friend
     }
 
-    rangeSliderValue = 50; //We use this variable to store our selected value from the input slider
+    rangeSliderValue = 75; //We use this variable to store our selected value from the input slider
 
     buttons = [
         {type: 'error', message: "Open Error Message"},
